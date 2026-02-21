@@ -4,12 +4,11 @@ import requests
 
 from tests.config import LOGIN_URL, REG_URL
 from tests.helper import generate_random_string
+from tests.user_service import UserService
 
 
 @pytest.fixture
 def user():
-        return {'name': 'vvkfhjepqu', 'password': 'xmftrahimo', 'email': 'vvkfhjepqu@yandex.ru'}
-
         name = generate_random_string()
 
         user = {
@@ -18,11 +17,15 @@ def user():
             "email": f"{name}@yandex.ru"
             
         }
-
-        resp = requests.post(REG_URL, data = user)
         return user
 
 @pytest.fixture
 def auth(user):
-    resp = requests.post(LOGIN_URL, data = user)
+    svc = UserService()
+    svc.create_user(user)
+    resp = svc.login(user)
     return resp.json()
+
+@pytest.fixture
+def service():
+      return UserService()

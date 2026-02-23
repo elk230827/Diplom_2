@@ -1,8 +1,5 @@
 import allure
 import pytest
-from tests.config import REG_URL
-from tests.helper import generate_random_string
-import requests
 
 class TestCreateUser:
     @allure.title("создать уникального пользователя")

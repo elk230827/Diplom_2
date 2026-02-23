@@ -1,8 +1,5 @@
 import allure
-import pytest
-from tests.config import INGREDIENTS, LOGIN_URL, ORDER_URL, REG_URL
-from tests.helper import generate_random_string
-import requests
+from tests.config import INGREDIENTS
 
 class TestOrder:
     @allure.title("Создание заказа:с авторизацией")

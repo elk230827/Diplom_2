@@ -1,11 +1,15 @@
 
-import pytest
-import requests
+import random
+import string
 
-from tests.config import LOGIN_URL, REG_URL
-from tests.helper import generate_random_string
+import pytest
+
 from tests.user_service import UserService
 
+def generate_random_string(length=10):
+    letters = string.ascii_lowercase
+    random_string = ''.join(random.choice(letters) for i in range(length))
+    return random_string
 
 @pytest.fixture
 def user():

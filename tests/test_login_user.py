@@ -1,7 +1,6 @@
 import allure
 import pytest
-from tests.config import LOGIN_URL, REG_URL
-from tests.helper import generate_random_string
+from tests.config import LOGIN_URL
 import requests
 
 class TestLoginUser:

@@ -1,0 +1,27 @@
+import allure
+import pytest
+
+class TestCreateUser:
+    @allure.title("создать уникального пользователя")
+    def test_create_unique_user(self, service,  user):
+        
+        resp = service.create_user(user)
+        assert resp.status_code == 200
+
+    @allure.title("создать пользователя, который уже зарегистрирован")
+    def test_create_user_duplicate(self, service, user):
+        resp = service.create_user(user) 
+
+        resp = service.create_user(user)
+        assert resp.status_code == 403
+        assert resp.json()["message"] == 'User already exists'
+ 
+    @pytest.mark.parametrize('field', ['name', 'password', 'email'])
+    @allure.title("создать пользователя и не заполнить одно из обязательных полей: {field}")
+    def test_create_user_wo_mandatory_fields(self, service, user, field):
+        del user[field]
+        resp = service.create_user(user)
+        assert resp.status_code == 403
+        assert resp.json()["message"] == 'Email, password and name are required fields'
+
+

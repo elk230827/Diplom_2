@@ -1,5 +1,5 @@
 import allure
-from tests.config import INGREDIENTS
+from config import INGREDIENTS
 
 class TestOrder:
     @allure.title("Создание заказа:с авторизацией")

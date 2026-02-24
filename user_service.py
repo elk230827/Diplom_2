@@ -1,7 +1,7 @@
 import allure
 import requests
 
-from tests.config import LOGIN_URL, ORDER_URL, REG_URL
+from config import LOGIN_URL, ORDER_URL, REG_URL
 
 NO_AUTH = {"accessToken": None}
 

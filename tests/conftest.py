@@ -4,7 +4,7 @@ import string
 
 import pytest
 
-from tests.user_service import UserService
+from user_service import UserService
 
 def generate_random_string(length=10):
     letters = string.ascii_lowercase

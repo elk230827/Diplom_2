@@ -1,6 +1,6 @@
 import allure
 import pytest
-from tests.config import LOGIN_URL
+from config import LOGIN_URL
 import requests
 
 class TestLoginUser:
